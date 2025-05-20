@@ -1,0 +1,22 @@
+services:
+  ollama:
+    restart: always
+    container_name: ollama
+    image: ollama/ollama:0.7.0
+    environment:
+      OLLAMA_HOST: ${HOST}:${PORT}
+      OLLAMA_CONTEXT_LENGTH: ${CONTEXT_LENGTH}
+      OLLAMA_KEEP_ALIVE: ${KEEP_ALIVE}
+      OLLAMA_MAX_LOADED_MODELS: ${MAX_LOADED_MODELS}
+      OLLAMA_NUM_PARALLEL: ${NUM_PARALLEL}
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
