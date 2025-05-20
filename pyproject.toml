@@ -1,0 +1,13 @@
+[project]
+name = "ollama-docker"
+version = "0.1.0"
+description = "Hosting an Ollama service using docker"
+authors = [
+    { name = "alan", email = "alan@barkingdog.ai" },
+]
+
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "taplo>=0.9.3",
+    "pre-commit>=4.2.0",
+]
